@@ -2,7 +2,11 @@
 
 ## Table of Contents
 1. [Description](#description)
-2. [Lecture 03: IO System Calls](#lecture-03-io-system-calls)
+2. [Lecture 02: Linux Commands](#lecture-02-linux-commands)
+   - [Directory Management](#directory-management)
+   - [File Management](#file-management)
+   - [Text Processing](#text-processing)
+3. [Lecture 03: IO System Calls](#lecture-03-io-system-calls)
    - [File Creation](#file-creation)
    - [File Opening](#file-opening)
    - [File Reading](#file-reading)
@@ -10,12 +14,12 @@
    - [File Seeking](#file-seeking)
    - [File Status](#file-status)
    - [Directory Operations](#directory-operations)
-3. [Lecture 04: Process in OS](#lecture-04-process-in-os)
+4. [Lecture 04: Process in OS](#lecture-04-process-in-os)
    - [Process Creation with `fork()`](#process-creation-with-fork)
    - [Process Identification](#process-identification)
    - [Executing Commands with `exec()`](#executing-commands-with-exec)
    - [Shell Command Execution with `system()`](#shell-command-execution-with-system)
-4. [References](#references)
+5. [References](#references)
 
 ---
 
@@ -23,7 +27,159 @@
 This repository contains explanations, notes, and code examples from the Operating Systems Lab lectures. It covers key concepts such as process creation, process synchronization, system calls, and practical coding exercises. The repository is organized by lecture topics, with each section providing detailed explanations, example code, and execution instructions.
 
 ---
+## Lecture 02: Linux Commands
 
+### Directory Management
+
+#### `mkdir`
+- **Usage**: Creates a new directory.
+- **Example**:
+  ```bash
+  mkdir mydir
+  ```
+- **Create Multiple Directories**:
+  ```bash
+  mkdir dir1 dir2 dir3
+  ```
+
+#### `mkdir -p`
+- **Usage**: Creates nested directories (parent directories if they don’t exist).
+- **Example**:
+  ```bash
+  mkdir -p parent/child/grandchild
+  ```
+
+---
+
+### File Management
+
+#### `touch`
+- **Usage**: Creates an empty file or updates the timestamp of an existing file.
+- **Example**:
+  ```bash
+  touch file.txt
+  ```
+
+#### `echo`
+- **Usage**: Writes text to a file.
+- **Overwrite File**:
+  ```bash
+  echo 'Hello' > file.txt
+  ```
+- **Append to File**:
+  ```bash
+  echo 'World' >> file.txt
+  ```
+
+#### `cp`
+- **Usage**: Copies files or directories.
+- **Example**:
+  ```bash
+  cp file.txt copy.txt
+  ```
+- **Copy Directory**:
+  ```bash
+  cp -r dir1 dir2
+  ```
+
+#### `mv`
+- **Usage**: Moves or renames files or directories.
+- **Example**:
+  ```bash
+  mv file.txt newfile.txt
+  ```
+
+#### `rm`
+- **Usage**: Removes files or directories.
+- **Example**:
+  ```bash
+  rm file.txt
+  ```
+- **Remove Directory**:
+  ```bash
+  rm -r dir1
+  ```
+- **Interactive Removal**:
+  ```bash
+  rm -ri dir1
+  ```
+
+#### `rmdir`
+- **Usage**: Removes an empty directory.
+- **Example**:
+  ```bash
+  rmdir emptydir
+  ```
+
+---
+
+### Text Processing
+
+#### `cat`
+- **Usage**: Displays the contents of a file.
+- **Example**:
+  ```bash
+  cat file.txt
+  ```
+- **Pipe with `tr`**:
+  ```bash
+  cat file.txt | tr a-z A-Z > output.txt
+  ```
+
+#### `wc`
+- **Usage**: Counts lines, words, and characters in a file.
+- **Example**:
+  ```bash
+  wc file.txt
+  ```
+
+#### `head`
+- **Usage**: Displays the first few lines of a file.
+- **Example**:
+  ```bash
+  head -3 file.txt
+  ```
+
+#### `tail`
+- **Usage**: Displays the last few lines of a file.
+- **Example**:
+  ```bash
+  tail -3 file.txt
+  ```
+
+#### `more`
+- **Usage**: Views file content page by page.
+- **Example**:
+  ```bash
+  more file.txt
+  ```
+
+#### `grep`
+- **Usage**: Searches for a pattern in a file.
+- **Example**:
+  ```bash
+  grep 'hello' file.txt
+  ```
+
+---
+
+### Text Editors
+
+#### `vi`
+- **Usage**: Opens the `vi` text editor.
+- **Example**:
+  ```bash
+  vi file.txt
+  ```
+
+#### `nano`
+- **Usage**: Opens the `nano` text editor.
+- **Example**:
+  ```bash
+  nano file.txt
+  ```
+
+---
 ## Lecture 03: IO System Calls
 
 ### File Creation
@@ -356,11 +512,12 @@ int main() {
 
 ## References
 1. **Instructor's Lectures**:
+   - Lecture #02: Linux Commands
    - Lecture #03: IO System Calls
    - Lecture #04: Process in OS
    - These lectures are the primary source of the content and examples provided in this repository.
 
-2. **External Resources**:
+3. **External Resources**:
    - [Linux Programmer's Manual](https://man7.org/linux/man-pages/): Official documentation for Linux system calls and functions.
    - Advanced Programming in the UNIX Environment by W. Richard Stevens: A comprehensive book on UNIX system programming.
    - [GNU C Library (glibc) Documentation](https://www.gnu.org/software/libc/manual/): Official documentation for the GNU C Library.
